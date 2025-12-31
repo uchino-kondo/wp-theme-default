@@ -1,7 +1,7 @@
 <!DOCTYPE html>
-<html <?php language_attributes(); ?> prefix="og: https://ogp.me/ns#">
+<html <?php language_attributes(); ?>>
 
-<head>
+<head prefix="og: https://ogp.me/ns#">
 <?php get_template_part('includes/head'); ?>
 <?php wp_head(); ?>
 </head>
@@ -33,7 +33,7 @@
   <span class="bar"></span>
   <span class="bar"></span>
 </button>
-<!-- /.header__btn hamburgerBtn -->
+<!-- /.header__btn hamburger -->
 
 
 
@@ -47,11 +47,11 @@
 
   <nav class="gnav__nav">
     <div class="gnav__nav-item">
-      <p class="gnav__link"><a href="<?php echo esc_url(home_url('/')); ?>">test</a></p>
-      <p class="gnav__link"><a href="<?php echo esc_url(home_url('/about')); ?>">About</a></p>
-      <p class="gnav__link"><a href="<?php echo esc_url(home_url('/')); ?>">test</a></p>
+      <p><a href="<?php echo esc_url(home_url('/')); ?>">test</a></p>
+      <p><a href="<?php echo esc_url(home_url('/about')); ?>">About</a></p>
+      <p><a href="<?php echo esc_url(home_url('/')); ?>">test</a></p>
     </div>
-    <!-- gnav__navItem -->
+    <!-- gnav__nav-item -->
   </nav>
 
   <div class="gnav__btns">
@@ -78,13 +78,13 @@
 <nav class="header__nav">
 
   <ul class="header__nav-item">
-    <li class="header__link"><a href="<?php echo esc_url(home_url('/')); ?>case">test</a></li>
-    <li class="header__link"><a href="<?php echo esc_url(home_url('/')); ?>knowledge">test</a></li>
-    <li class="header__link"><a href="<?php echo esc_url(home_url('/')); ?>news">test</a></li>
-    <li class="header__link"><a href="<?php echo esc_url(home_url('/')); ?>about">About</a></li>
-    <li class="header__link"><a href="<?php echo esc_url(home_url('/')); ?>careers">test</a></li>
+    <li><a href="<?php echo esc_url(home_url('/')); ?>case">test</a></li>
+    <li><a href="<?php echo esc_url(home_url('/')); ?>knowledge">test</a></li>
+    <li><a href="<?php echo esc_url(home_url('/')); ?>news">test</a></li>
+    <li><a href="<?php echo esc_url(home_url('/')); ?>about">About</a></li>
+    <li><a href="<?php echo esc_url(home_url('/')); ?>careers">test</a></li>
   </ul>
-  <!-- header__navItem -->
+  <!-- header__nav-item -->
 
 </nav>
 <!-- /.header__nav ---------->

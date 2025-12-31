@@ -1,6 +1,5 @@
 <?php
-function my_setup()
-{
+function my_setup() {
   add_theme_support('post-thumbnails');
   add_theme_support('automatic-feed-links');
   add_theme_support('title-tag');
@@ -26,8 +25,7 @@ add_image_size('post_thumbnails', 1280, 900, true);
 
 
 //投稿名変更
-function Change_menulabel()
-{
+function Change_menulabel() {
   global $menu;
   global $submenu;
   $name = 'News';
@@ -38,8 +36,7 @@ function Change_menulabel()
   $submenu['upload.php'][5][0] = '画像・ファイル一覧';
   $submenu['upload.php'][10][0] = '画像・ファイルを追加';
 }
-function Change_objectlabel()
-{
+function Change_objectlabel() {
   global $wp_post_types;
   $name = 'News';
   $labels = &$wp_post_types['post']->labels;
@@ -93,13 +90,12 @@ require_once(dirname(__FILE__) . '/includes/breadcrumb.php');
 
 
 // ダッシュボード一部消去
-function remove_dashboard_widget()
-{
+function remove_dashboard_widget() {
   // remove_meta_box( 'dashboard_site_health', 'dashboard', 'normal' ); // サイトヘルスステータス
   // remove_meta_box( 'dashboard_right_now', 'dashboard', 'normal' ); // 概要
   remove_meta_box('dashboard_activity', 'dashboard', 'normal'); // アクティビティ
   // remove_meta_box( 'dashboard_quick_press', 'dashboard', 'side' ); // クイックドラフト
-  remove_meta_box('dashboard_primary', 'dashboard', 'side'); // WordPress イベントとニュース
+  // remove_meta_box('dashboard_primary', 'dashboard', 'side'); // WordPress イベントとニュース
   // remove_action( 'welcome_panel', 'wp_welcome_panel' ); // ウェルカムパネル
 }
 add_action('wp_dashboard_setup', 'remove_dashboard_widget');
@@ -107,8 +103,7 @@ add_action('wp_dashboard_setup', 'remove_dashboard_widget');
 
 
 // ページネーションを使用するために必須
-function my_parse_query($query)
-{
+function my_parse_query($query) {
   if (!isset($query->query_vars['paged']) && isset($query->query_vars['page']))
     $query->query_vars['paged'] = $query->query_vars['page'];
 }
@@ -117,8 +112,7 @@ add_action('parse_query', 'my_parse_query');
 
 
 // エディター自動保存延長
-function change_autosave_interval($editor_settings)
-{
+function change_autosave_interval($editor_settings) {
   $editor_settings['autosaveInterval'] = 3600;
   return $editor_settings;
 }
@@ -127,8 +121,7 @@ add_filter('block_editor_settings', 'change_autosave_interval');
 
 
 // ブラウザタブの２ページ目表示を消す
-function remove_title_pagenation($title)
-{
+function remove_title_pagenation($title) {
   unset($title['page']);
   return $title;
 };
@@ -137,8 +130,7 @@ add_filter('document_title_parts', 'remove_title_pagenation');
 
 
 // セパレータ変更
-function change_title_separator($sep)
-{
+function change_title_separator($sep) {
   $sep = ' | ';
   return $sep;
 }
@@ -160,8 +152,7 @@ add_action('init', function () {
 
 
 
-function my_script_init()
-{
+function my_script_init() {
   $lated_ver = '1.0.0';
   wp_deregister_script('jquery');
 
@@ -182,8 +173,7 @@ add_action('wp_enqueue_scripts', 'my_script_init');
 
 
 
-function block_theme_setup()
-{
+function block_theme_setup() {
   // ブロックエディタ用のスタイルを有効にする
   add_theme_support('wp-block-styles');
 
@@ -192,17 +182,17 @@ function block_theme_setup()
   add_editor_style('style.css');
 
   // theme.jsonの設定を有効化（WordPress 5.8以降）
-  add_theme_support('editor-color-palette');
-  add_theme_support('editor-font-sizes');
-  add_theme_support('editor-spacing');
+  // 注意: これらの設定はtheme.jsonがある場合は不要です
+  // add_theme_support('editor-color-palette');
+  // add_theme_support('editor-font-sizes');
+  // add_theme_support('editor-spacing');
 }
 add_action('after_setup_theme', 'block_theme_setup');
 
 
 
 // theme.jsonの設定をCSS変数として出力する
-function enqueue_theme_json_styles()
-{
+function enqueue_theme_json_styles() {
   // WordPressが自動的にtheme.jsonを読み込んでCSS変数を生成する
   // 追加のカスタムCSS変数が必要な場合はここに記述
 }
@@ -211,8 +201,7 @@ add_action('wp_enqueue_scripts', 'enqueue_theme_json_styles');
 
 
 // Contact Form 7の自動pタグ無効
-function wpcf7_autop_return_false()
-{
+function wpcf7_autop_return_false() {
   return false;
 }
 add_filter('wpcf7_autop_or_not', 'wpcf7_autop_return_false');
@@ -220,15 +209,13 @@ add_filter('wpcf7_autop_or_not', 'wpcf7_autop_return_false');
 
 
 // 投稿ページのパーマリンクをカスタマイズ
-function add_article_post_permalink($permalink)
-{
+function add_article_post_permalink($permalink) {
   $permalink = '/news' . $permalink;
   return $permalink;
 }
 add_filter('pre_post_link', 'add_article_post_permalink');
 
-function add_article_post_rewrite_rules($post_rewrite)
-{
+function add_article_post_rewrite_rules($post_rewrite) {
   $return_rule = array();
   foreach ($post_rewrite as $regex => $rewrite) {
     $return_rule['news/' . $regex] = $rewrite;
@@ -240,8 +227,7 @@ add_filter('post_rewrite_rules', 'add_article_post_rewrite_rules');
 
 
 //bodyクラスにページスラッグと最上の親ページスラッグのクラスを追加
-function add_page_slug_class_name($classes)
-{
+function add_page_slug_class_name($classes) {
   if (is_page()) {
     $page = get_post(get_the_ID());
     $classes[] = $page->post_name;
@@ -259,8 +245,7 @@ function add_page_slug_class_name($classes)
 add_filter('body_class', 'add_page_slug_class_name');
 
 //カテゴリスラッグクラスをbodyクラスに追加
-function add_category_slug_classes_to_body_classes($classes)
-{
+function add_category_slug_classes_to_body_classes($classes) {
   global $post;
   if (is_single()) {
     foreach ((get_the_category($post->ID)) as $category)
@@ -285,8 +270,7 @@ add_filter('body_class', 'add_category_slug_classes_to_body_classes');
 
 // ショートコード テーマの「img」フォルダへのURL
 // usage: [img]hoge.jpg
-function my_images_dir()
-{
+function my_images_dir() {
   return get_template_directory_uri() . '/img/';
 }
 add_shortcode('img', 'my_images_dir');
@@ -296,8 +280,7 @@ add_shortcode('img', 'my_images_dir');
 //ショートコード get_template_partをショートコード化
 //argsはjson形式
 //usage: [template slug="includes/header" name="nav" args="{"hoge":"fuga","hogehoge":"fugafuga"}"]
-function my_get_template_part($atts)
-{
+function my_get_template_part($atts) {
   extract(shortcode_atts(
     [
       'slug' => '',
@@ -320,8 +303,7 @@ add_shortcode('template', 'my_get_template_part');
 
 
 // 構造化
-function insert_json_ld()
-{
+function insert_json_ld() {
   global $post;
   $post_data = $post;
   $category = get_the_category();

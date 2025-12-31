@@ -20,20 +20,12 @@
   }
 }
 
-@media screen and (min-width: 768px) {
-  a[href^="tel:"] {
-    pointer-events: none;
-  }
-}
-
 body {
   color: #000;
   font-family: "Noto Sans JP", sans-serif;
   font-size: 1.6rem;
   font-weight: 500;
   line-height: 1.5;
-  overflow-wrap: break-word;
-  overflow-x: hidden;
 }
 @media screen and (min-width: 768px) {
   body {
@@ -85,6 +77,16 @@ a, span {
   display: inline-block;
 }
 
+@media screen and (min-width: 768px) {
+  a[href^="tel:"] {
+    pointer-events: none;
+  }
+}
+
+article > * + * {
+  margin-top: 2em;
+}
+
 .pc-only {
   display: none;
 }
@@ -112,25 +114,29 @@ button {
   padding: 0;
 }
 
-body,
-h1,
-h2,
-h3,
-h4,
-p,
-ul,
-ol,
-figure,
-blockquote,
-dl,
-dd {
+*:not(dialog) {
   margin: 0;
+}
+
+html {
+  -webkit-text-size-adjust: none;
+  -moz-text-size-adjust: none;
+  text-size-adjust: none;
+  -moz-tab-size: 4;
+  -o-tab-size: 4;
+  line-break: strict; /* 禁則処理を厳格に適用 */
+  overflow-wrap: anywhere; /* 収まらない場合に折り返す */
+  overflow-x: clip;
+  tab-size: 4;
+  word-break: normal; /* 単語の分割はデフォルトに依存 */
+}
+html:has(:modal[open]) {
+  overflow: hidden;
 }
 
 body {
   min-height: 100vh;
-  min-inline-size: 0;
-  text-rendering: optimizeSpeed;
+  overflow: inherit;
 }
 
 ul,
@@ -139,54 +145,51 @@ li {
   list-style: none;
 }
 
-@media  {
-  img {
-    image-rendering: -webkit-optimize-contrast;
-  }
-}
-
-img {
-  display: block;
-  height: auto;
-  image-rendering: auto;
-  width: 100%;
-}
-
-article > * + * {
-  margin-top: 2em;
-}
-
 address,
 strong,
 em {
   font-style: normal;
 }
 
+svg,
+img,
+video,
+audio,
+iframe,
+object,
+canvas {
+  max-inline-size: 100%;
+  vertical-align: middle;
+}
+
+img,
+video {
+  block-size: auto;
+}
+
+iframe {
+  border: none;
+}
+
+img {
+  height: auto;
+  image-rendering: auto;
+  width: 100%;
+}
+
 input,
 button,
 textarea,
-select {
-  font: inherit;
-}
-
-img:not([alt]) {
-  filter: blur(10px);
-}
-
-input,
 select,
-textarea {
-  -webkit-appearance: none;
-  appearance: none;
-  background: transparent;
-  border: none;
-  border-radius: 0;
+::file-selector-button {
+  color: inherit;
   font: inherit;
-  outline: none;
+  font-size: max(16px, 1em);
 }
 
 textarea {
-  resize: vertical;
+  max-inline-size: 100%;
+  resize: block;
 }
 
 input[type=checkbox],
@@ -197,14 +200,26 @@ input[type=radio] {
 
 input[type=submit],
 input[type=button],
-label,
-button,
-select {
+label[for],
+select,
+summary {
   cursor: pointer;
 }
 
-select {
-  color: #000;
+button,
+[role=tab],
+[role=button],
+[role=option],
+[type=button],
+[type=reset],
+[type=submit],
+::file-selector-button {
+  cursor: pointer;
+  touch-action: manipulation;
+}
+
+:disabled {
+  cursor: not-allowed;
 }
 
 select::-ms-expand {
@@ -214,7 +229,6 @@ select::-ms-expand {
 button {
   background-color: transparent;
   border: none;
-  touch-action: manipulation;
 }
 
 @media screen and (min-width: 768px) {
@@ -1735,7 +1749,7 @@ body.js-fixed {
 
 .header {
   background-color: #FFF;
-  background-color: red;
+  background-color: transparent;
   height: 6rem;
   left: 0;
   position: fixed;

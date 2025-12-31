@@ -25,19 +25,10 @@ html {
   }
 }
 
-// pcの電話番号発信対応
-a[href^="tel:"] {
-  @include mq(md) {
-    pointer-events: none;
-  }
-}
-
 body {
   font-family: $baseFont;
   color: $black;
   @include f_around(16, $medium, 24, false);
-  overflow-wrap: break-word;
-  overflow-x: hidden;
   @include mq(md) {
     color: $black;
   }
@@ -80,6 +71,17 @@ a {
 
 a,span {
   display: inline-block;
+}
+
+// pcの電話番号発信対応
+a[href^="tel:"] {
+  @include mq(md) {
+    pointer-events: none;
+  }
+}
+
+article > * + * {
+  margin-top: 2em;
 }
 
 // デスクトップサイズのみ表示
