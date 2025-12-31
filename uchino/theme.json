@@ -1,0 +1,234 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/theme.json",
+	"version": 2,
+	"settings": {
+		"color": {
+			"palette": [
+				{
+					"slug": "main-color",
+					"color": "#F2F2F2",
+					"name": "メインカラー"
+				},
+				{
+					"slug": "sub-color",
+					"color": "#221816",
+					"name": "サブカラー"
+				},
+				{
+					"slug": "accent-color",
+					"color": "#333333",
+					"name": "アクセントカラー"
+				},
+				{
+					"slug": "white",
+					"color": "#FFFFFF",
+					"name": "白"
+				},
+				{
+					"slug": "black",
+					"color": "#000000",
+					"name": "黒"
+				},
+				{
+					"slug": "black-01",
+					"color": "#221816",
+					"name": "黒01"
+				},
+				{
+					"slug": "gray-01",
+					"color": "#F5F5F5",
+					"name": "グレー01"
+				},
+				{
+					"slug": "gray-02",
+					"color": "#838383",
+					"name": "グレー02"
+				},
+				{
+					"slug": "gray-03",
+					"color": "#D9D9D9",
+					"name": "グレー03"
+				},
+				{
+					"slug": "gray-04",
+					"color": "#F7F5E8",
+					"name": "グレー04"
+				}
+			],
+			"custom": true,
+			"customDuotone": true,
+			"customGradient": true,
+			"defaultDuotone": false,
+			"defaultGradients": false,
+			"defaultPalette": false,
+			"link": true
+		},
+		"typography": {
+			"fontFamilies": [
+				{
+					"fontFamily": "'Noto Sans JP', sans-serif",
+					"slug": "base",
+					"name": "ベースフォント"
+				}
+			],
+			"fontSizes": [
+				{
+					"slug": "16",
+					"size": "1.6rem",
+					"name": "16px"
+				},
+				{
+					"slug": "17",
+					"size": "1.7rem",
+					"name": "17px"
+				},
+				{
+					"slug": "18",
+					"size": "1.8rem",
+					"name": "18px"
+				},
+				{
+					"slug": "20",
+					"size": "2.0rem",
+					"name": "20px"
+				},
+				{
+					"slug": "24",
+					"size": "2.4rem",
+					"name": "24px"
+				},
+				{
+					"slug": "30",
+					"size": "3.0rem",
+					"name": "30px"
+				}
+			],
+			"customFontSize": true,
+			"lineHeight": true,
+			"fontStyle": true,
+			"fontWeight": true,
+			"letterSpacing": true,
+			"textDecoration": true,
+			"textTransform": true
+		},
+		"spacing": {
+			"spacingScale": {
+				"steps": 0
+			},
+			"spacingSizes": [
+				{
+					"slug": "4",
+					"size": "0.4rem",
+					"name": "4px"
+				},
+				{
+					"slug": "6",
+					"size": "0.6rem",
+					"name": "6px"
+				},
+				{
+					"slug": "8",
+					"size": "0.8rem",
+					"name": "8px"
+				},
+				{
+					"slug": "10",
+					"size": "1.0rem",
+					"name": "10px"
+				},
+				{
+					"slug": "14",
+					"size": "1.4rem",
+					"name": "14px"
+				},
+				{
+					"slug": "16",
+					"size": "1.6rem",
+					"name": "16px"
+				},
+				{
+					"slug": "20",
+					"size": "2.0rem",
+					"name": "20px"
+				},
+				{
+					"slug": "24",
+					"size": "2.4rem",
+					"name": "24px"
+				},
+				{
+					"slug": "25",
+					"size": "2.5rem",
+					"name": "25px"
+				},
+				{
+					"slug": "30",
+					"size": "3.0rem",
+					"name": "30px"
+				},
+				{
+					"slug": "34",
+					"size": "3.4rem",
+					"name": "34px"
+				},
+				{
+					"slug": "40",
+					"size": "4.0rem",
+					"name": "40px"
+				},
+				{
+					"slug": "46",
+					"size": "4.6rem",
+					"name": "46px"
+				},
+				{
+					"slug": "50",
+					"size": "5.0rem",
+					"name": "50px"
+				},
+				{
+					"slug": "60",
+					"size": "6.0rem",
+					"name": "60px"
+				},
+				{
+					"slug": "67",
+					"size": "6.7rem",
+					"name": "67px"
+				}
+			],
+			"units": [
+				"px",
+				"em",
+				"rem",
+				"vh",
+				"vw",
+				"%"
+			],
+			"padding": true,
+			"margin": true
+		},
+		"layout": {
+			"contentSize": "1366px",
+			"wideSize": "1440px"
+		}
+	},
+	"styles": {
+		"color": {
+			"background": "#FFFFFF",
+			"text": "#000000"
+		},
+		"typography": {
+			"fontFamily": "'Noto Sans JP', sans-serif",
+			"fontSize": "1.6rem"
+		},
+		"spacing": {
+			"padding": {
+				"top": "0",
+				"right": "0",
+				"bottom": "0",
+				"left": "0"
+			}
+		}
+	}
+}
