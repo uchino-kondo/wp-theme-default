@@ -95,7 +95,7 @@ function remove_dashboard_widget() {
   // remove_meta_box( 'dashboard_right_now', 'dashboard', 'normal' ); // 概要
   remove_meta_box('dashboard_activity', 'dashboard', 'normal'); // アクティビティ
   // remove_meta_box( 'dashboard_quick_press', 'dashboard', 'side' ); // クイックドラフト
-  // remove_meta_box('dashboard_primary', 'dashboard', 'side'); // WordPress イベントとニュース
+  remove_meta_box('dashboard_primary', 'dashboard', 'side'); // WordPress イベントとニュース
   // remove_action( 'welcome_panel', 'wp_welcome_panel' ); // ウェルカムパネル
 }
 add_action('wp_dashboard_setup', 'remove_dashboard_widget');
@@ -180,23 +180,8 @@ function block_theme_setup() {
   // エディタ側にフロントと同じスタイルを適用させる
   add_theme_support('editor-styles');
   add_editor_style('style.css');
-
-  // theme.jsonの設定を有効化（WordPress 5.8以降）
-  // 注意: これらの設定はtheme.jsonがある場合は不要です
-  // add_theme_support('editor-color-palette');
-  // add_theme_support('editor-font-sizes');
-  // add_theme_support('editor-spacing');
 }
 add_action('after_setup_theme', 'block_theme_setup');
-
-
-
-// theme.jsonの設定をCSS変数として出力する
-function enqueue_theme_json_styles() {
-  // WordPressが自動的にtheme.jsonを読み込んでCSS変数を生成する
-  // 追加のカスタムCSS変数が必要な場合はここに記述
-}
-add_action('wp_enqueue_scripts', 'enqueue_theme_json_styles');
 
 
 
